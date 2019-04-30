@@ -34,7 +34,7 @@ trait AdminUserPages
      */
     public function getPassword(Request $request, $role = null)
     {
-        return $this->response->title('Change Password')
+        return $this->response->title('修改密码')
             ->view('user.password')
             ->output();
     }
@@ -57,7 +57,7 @@ trait AdminUserPages
      * Display the specified resource.
      *
      * @param Request $request
-     * @param Role     $role
+     * @param int     $id
      *
      * @return Response
      */

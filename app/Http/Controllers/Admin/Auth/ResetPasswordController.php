@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Admin\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Traits\AdminUser\RoutesAndGuards;
+use App\Traits\AdminUser\Auth\AuthenticatesUsers;
+use App\Traits\Theme\ThemeAndViews;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Http\Response\Auth\Response as AuthResponse;
 
 class ResetPasswordController extends Controller
 {
@@ -18,7 +23,7 @@ class ResetPasswordController extends Controller
     |
     */
 
-    use ResetsPasswords;
+    use RoutesAndGuards, ThemeAndViews, ValidatesRequests, AuthenticatesUsers,ResetsPasswords;
 
     /**
      * Where to redirect users after resetting their password.
@@ -34,6 +39,9 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->response   = resolve(AuthResponse::class);
+        $this->setRedirectTo();
+        $this->middleware('guest:' . $this->getGuard(), ['except' => ['logout', 'verify', 'locked', 'sendVerification']]);
+        $this->setTheme();
     }
 }

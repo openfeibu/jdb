@@ -40,7 +40,6 @@ class ProductController extends BaseController
     public function show(Request $request,$id)
     {
         $product = $this->product_repository->find($id);
-
         return $this->response->title($product['name'])
             ->layout('product')
             ->view($this->view_prefix.'show')

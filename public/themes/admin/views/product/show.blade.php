@@ -35,6 +35,12 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
+                        <label class="layui-form-label">公司</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="company" autocomplete="off" placeholder="请输入公司" class="layui-input"  value="{{$product['company']}}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
                         <label class="layui-form-label">图片</label>
                         {!! $product->files('image')
                         ->url($product->getUploadUrl('image'))

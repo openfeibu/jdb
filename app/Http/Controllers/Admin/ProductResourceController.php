@@ -20,13 +20,18 @@ class ProductResourceController extends BaseController
     }
     public function index(Request $request)
     {
+        $limit = $request->input('limit',config('app.limit'));
         $categories = $this->category_repository->categories();
 
-        $category_id = $request->input('category_id',$categories[0]['id']);
+        $search = $request->input('search',[]);
+        $category_id = isset($search['category_id']) ? $search['category_id'] : '';
 
-        $limit = $request->input('limit',config('app.limit'));
-        $products = $this->repository
-            ->where(['category_id' => $category_id])
+        $products = $this->repository;
+        if($category_id)
+        {
+            $products = $products->where(['category_id' => $category_id]);
+        }
+        $products = $products
             ->orderBy('id','desc')
             ->paginate($limit);
 

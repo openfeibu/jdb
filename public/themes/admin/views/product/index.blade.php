@@ -15,8 +15,9 @@
                 </div>
                 <div class="layui-inline">
                     <select name="category_id" class="select layui-select search_key" lay-verify="">
+                        <option name="category_id" value="0">全部</option>
                         @foreach($categories as $key => $category)
-                            <option name="category_id" @if($category_id == $category['id']) selected @endif>{{ $category['name'] }}</option>
+                            <option name="category_id" value="{{ $category['id'] }}" @if($category_id == $category['id']) selected @endif>{{ $category['name'] }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -54,6 +55,7 @@
                 ,{field:'name',title:'产品名称', width:200,edit:'text'}
                 ,{field:'category_name',title:'产品分类', width:200}
                 ,{field:'price',title:'价格',edit:'text'}
+                ,{field:'company',title:'公司',edit:'text'}
                 ,{field:'image',title:'图片', toolbar:'#imageTEM'}
                 ,{field:'score',title:'操作', width:200, align: 'right',toolbar:'#barDemo'}
             ]]

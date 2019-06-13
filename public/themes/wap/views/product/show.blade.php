@@ -10,7 +10,7 @@
         <div class="productDetail-top">
             <div class="img"><img src="{{ url('image/original/'.$product->image) }}" alt=""></div>
             <div class="name">{{ $product['name'] }} {{ $product->category->name }}</div>
-            <div class="form"> <i class="fb-inlineBlock"><img src="{!! theme_asset("images/rz.png") !!}" alt=""></i><span class="fb-inlineBlock">{{ setting('company_name') }}</span></div>
+            @if($product['company'])<div class="form"> <i class="fb-inlineBlock"><img src="{!! theme_asset("images/rz.png") !!}" alt=""></i><span class="fb-inlineBlock">{{ $product['company'] }}</span></div>@endif
             <div class="money">
                 <label for="">建议零售价</label>
                 <span>{{ $product['price'] }}元</span>

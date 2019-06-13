@@ -29,3 +29,13 @@
 </div>
 {{ Session::forget('info') }}
 @endif
+
+@if(isset($errors) && $errors->all())
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>{{trans('app.flash.error')}}:</strong>
+    @foreach($errors->all() as $message)
+      {{ $message }}
+    @endforeach
+  </div>
+@endif

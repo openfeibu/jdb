@@ -41,7 +41,7 @@ class Product extends BaseModel
         $file = storage_path('uploads').DIRECTORY_SEPARATOR.'qrcode'.DIRECTORY_SEPARATOR.$file_name;
 //        if(!file_exists($file))
 //        {
-            QrCode::format('png')->size($size)->merge(storage_path('uploads').'/logo.png',0.3,true)->encoding('UTF-8')->generate($url, $file);
+            QrCode::format('png')->size($size)->merge(storage_path('uploads').'/logo.png',0.1,true)->encoding('UTF-8')->generate($url, $file);
         //}
         return '/qrcode/'.$file_name;
     }

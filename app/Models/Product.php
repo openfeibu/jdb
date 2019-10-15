@@ -36,13 +36,13 @@ class Product extends BaseModel
     public function generateQrcode($id,$name)
     {
         $size = 800;
-        $url = config('app.url').'?product/id/'.$id;
+        $url = config('app.url').'/product/id/'.$id;
         $file_name = $id.'-'.$size.'-'.md5($url).'.png';
         $file = storage_path('uploads').DIRECTORY_SEPARATOR.'qrcode'.DIRECTORY_SEPARATOR.$file_name;
-//        if(!file_exists($file))
-//        {
-            QrCode::format('png')->size($size)->merge(storage_path('uploads').'/logo.png',0.2,true)->encoding('UTF-8')->generate($url, $file);
-        //}
+        if(!file_exists($file))
+        {
+            QrCode::format('png')->size($size)->merge(storage_path('uploads').'/logo.png',0.15,true)->encoding('UTF-8')->generate($url, $file);
+        }
         return '/qrcode/'.$file_name;
     }
 }

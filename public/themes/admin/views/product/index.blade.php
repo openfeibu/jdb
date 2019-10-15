@@ -38,7 +38,9 @@
 <script type="text/html" id="imageTEM">
     <img src="/image/original/@{{d.image}}" alt="" height="28">
 </script>
-
+<script type="text/html" id="qrcodeTEM">
+    <a href="/image/download/@{{d.qrcode}}"><img src="/image/original/@{{d.qrcode}}" alt="" height="28">
+</script>
 <script>
     var main_url = "{{guard_url('product/product')}}";
     var delete_all_url = "{{guard_url('product/product/destroyAll')}}";
@@ -57,6 +59,7 @@
                 ,{field:'price',title:'价格',edit:'text'}
                 ,{field:'company',title:'公司',edit:'text'}
                 ,{field:'image',title:'图片', toolbar:'#imageTEM'}
+                ,{field:'qrcode',title:'二维码(点击下载)',toolbar:'#qrcodeTEM'}
                 ,{field:'score',title:'操作', width:200, align: 'right',toolbar:'#barDemo'}
             ]]
             ,id: 'fb-table'

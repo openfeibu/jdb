@@ -25,4 +25,23 @@ class Product extends BaseModel
         return $this->belongsTo('App\Models\ProductCategory', 'category_id');
     }
 
+    public function getQrcode($distributor)
+    {
+        $id = $distributor['id'];
+        $name = $distributor['name'];
+        return $this->generateQrcode($id);
+    }
+
+    public function generateQrcode($id)
+    {
+        $size = 800;
+        $url = config('app.url').'?product/id/'.$id;
+        $file_name = $id.'-'.$size.'-'.md5($url).'.svg';
+        $file = storage_path('uploads').DIRECTORY_SEPARATOR.'qrcode'.DIRECTORY_SEPARATOR.$file_name;
+        if(!file_exists($file))
+        {
+            QrCode::size($size)->generate($url, $file);
+        }
+        return '/qrcode/'.$file_name;
+    }
 }

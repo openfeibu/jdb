@@ -30,7 +30,7 @@ class Product extends BaseModel
     {
         $id = $distributor['id'];
         $name = $distributor['name'];
-        return $this->generateQrcode($id);
+        return $this->generateQrcode($id,$name);
     }
 
     public function generateQrcode($id,$name)
@@ -41,7 +41,7 @@ class Product extends BaseModel
         $file = storage_path('uploads').DIRECTORY_SEPARATOR.'qrcode'.DIRECTORY_SEPARATOR.$file_name;
         if(!file_exists($file))
         {
-            QrCode::size($size)->generate($url, $file);
+            QrCode::size($size)->format('eps')->encoding('UTF-8')->generate($url, $file);
         }
         return '/qrcode/'.$file_name;
     }

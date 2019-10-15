@@ -37,11 +37,11 @@ class Product extends BaseModel
     {
         $size = 800;
         $url = config('app.url').'?product/id/'.$id;
-        $file_name = $name.'-'.$id.'-'.$size.'-'.md5($url).'.png';
+        $file_name = $name.'-'.$id.'-'.$size.'-'.md5($url).'.jpg';
         $file = storage_path('uploads').DIRECTORY_SEPARATOR.'qrcode'.DIRECTORY_SEPARATOR.$file_name;
         if(!file_exists($file))
         {
-            QrCode::size($size)->format('eps')->encoding('UTF-8')->generate($url, $file);
+            QrCode::format('jpg')->size($size)->encoding('UTF-8')->generate($url, $file);
         }
         return '/qrcode/'.$file_name;
     }

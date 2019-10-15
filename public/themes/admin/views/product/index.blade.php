@@ -36,7 +36,7 @@
     <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
 </script>
 <script type="text/html" id="imageTEM">
-    <img src="/image/sm/@{{d.image}}" alt="" height="28">
+    <img src="/image/original/@{{d.image}}" alt="" height="28">
 </script>
 
 <script>

@@ -176,6 +176,7 @@ return [
         HieuLe\Active\ActiveServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         //Teepluss\Theme\ThemeServiceProvider::class,
     ],
 
@@ -243,6 +244,7 @@ return [
         'Active' => HieuLe\Active\Facades\Active::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ],
     'allow_origin' =>[
         'http://192.168.0.3:1818',

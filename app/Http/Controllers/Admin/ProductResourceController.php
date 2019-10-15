@@ -38,7 +38,7 @@ class ProductResourceController extends BaseController
         foreach ($products as $key => $product)
         {
             $product->category_name = $product->category->name;
-            $product->qrcode = app(Product::class)->generateQrcode($product->id);
+            $product->qrcode = app(Product::class)->generateQrcode($product->id,$product->name);
         }
 
         if ($this->response->typeIs('json')) {

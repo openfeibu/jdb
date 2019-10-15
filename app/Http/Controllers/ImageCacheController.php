@@ -70,7 +70,7 @@ class ImageCacheController extends BaseController
 
         return $this->buildResponse(file_get_contents($path));
     }
-    
+
     public function getDownload($filename)
     {
         $path = $this->getImagePath($filename);

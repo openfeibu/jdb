@@ -22,7 +22,8 @@ class ImageCacheController extends BaseController
         switch (strtolower($template)) {
             case 'original':
                 return $this->getOriginal($filename);
-            
+            case 'download':
+                return $this->getDownload($filename);
             default:
                 return $this->getImage($template, $filename);
         }

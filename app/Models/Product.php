@@ -37,7 +37,7 @@ class Product extends BaseModel
     {
         $size = 800;
         $url = config('app.url').'?product/id/'.$id;
-        $file_name = $name.'-'.$size.'-'.md5($url).'.svg';
+        $file_name = $name.'-'.$id.'-'.$size.'-'.md5($url).'.svg';
         $file = storage_path('uploads').DIRECTORY_SEPARATOR.'qrcode'.DIRECTORY_SEPARATOR.$file_name;
         if(!file_exists($file))
         {
